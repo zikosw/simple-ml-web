@@ -32,6 +32,7 @@ jobs:
           rsync -av \
             --exclude='.git/' \
             --exclude='.github/' \
+            --exclude='public/' \
             --exclude='*.md' \
             ./ public/
       - name: Upload artifact
