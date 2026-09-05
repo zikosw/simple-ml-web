@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple ML Web — Naive Bayes & Random Forest</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Simple ML Web</h1>
+    <p>Train and validate <strong>Naive Bayes</strong> and <strong>Random Forest</strong> classifiers entirely in your browser, powered by <a href="https://github.com/mljs/ml" target="_blank" rel="noopener">ml.js</a>.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Dataset</h2>
+      <div class="row">
+        <button id="loadIrisBtn" type="button">Load Iris sample dataset</button>
+        <span class="or">or</span>
+        <label class="file-label">
+          Upload CSV
+          <input type="file" id="csvInput" accept=".csv,text/csv" />
+        </label>
+      </div>
+      <p class="hint">CSV format: header row, numeric feature columns, and the <em>last column</em> as the class label.</p>
+      <div id="datasetInfo" class="info hidden"></div>
+      <div id="previewWrap" class="table-wrap hidden">
+        <table id="previewTable"></table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Training options</h2>
+      <div class="row options">
+        <label>Test split
+          <select id="testSplit">
+            <option value="0.2">20%</option>
+            <option value="0.3" selected>30%</option>
+            <option value="0.4">40%</option>
+          </select>
+        </label>
+        <label>Random Forest trees
+          <input type="number" id="nEstimators" min="1" max="200" value="25" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="shuffleData" checked /> Shuffle data
+        </label>
+        <button id="trainBtn" type="button" disabled>Train &amp; validate models</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="resultsCard">
+      <h2>3. Results</h2>
+      <div class="results-grid">
+        <div class="result" id="nbResult">
+          <h3>Gaussian Naive Bayes</h3>
+          <p class="accuracy"></p>
+          <div class="table-wrap"><table class="confusion"></table></div>
+        </div>
+        <div class="result" id="rfResult">
+          <h3>Random Forest</h3>
+          <p class="accuracy"></p>
+          <div class="table-wrap"><table class="confusion"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card hidden" id="predictCard">
+      <h2>4. Predict</h2>
+      <p class="hint">Enter feature values to classify a new sample with both trained models.</p>
+      <div id="predictInputs" class="row"></div>
+      <button id="predictBtn" type="button">Predict</button>
+      <div id="predictOutput" class="info hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Runs 100% client-side — no data leaves your browser.</p>
+  </footer>
+
+  <script src="vendor/ml.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
