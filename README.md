@@ -29,11 +29,13 @@ python3 -m http.server 8000
 
 ## Deploy (GitHub Pages)
 
-This repo now includes a GitHub Actions workflow at `/home/runner/work/simple-ml-web/simple-ml-web/.github/workflows/deploy-pages.yml` that deploys the static site to GitHub Pages on every push to `main`.
+This repo now includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml` that deploys the static site to GitHub Pages on every push to `main`.
 
 1. In GitHub, open **Settings → Pages**
 2. Under **Build and deployment**, set **Source** to **GitHub Actions**
 3. Push to `main` (or run the **Deploy static site to GitHub Pages** workflow manually)
 4. Access the site at:
 
-`https://zikosw.github.io/simple-ml-web/`
+`https://<your-github-username>.github.io/<your-repo-name>/`
+
+You can also get the exact URL from the deployed workflow run output (`page_url`) or from **Settings → Pages**.
