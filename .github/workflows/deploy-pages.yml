@@ -26,29 +26,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Prepare static site artifact
-        run: |
-          mkdir -p public
-          rsync -av \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='public/' \
-            --include='*/' \
-            --include='*.html' \
-            --include='*.css' \
-            --include='*.js' \
-            --include='*.json' \
-            --include='*.svg' \
-            --include='*.png' \
-            --include='*.jpg' \
-            --include='*.jpeg' \
-            --include='*.gif' \
-            --include='*.webp' \
-            --include='*.ico' \
-            --include='*.woff' \
-            --include='*.woff2' \
-            --exclude='*' \
-            ./ public/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
