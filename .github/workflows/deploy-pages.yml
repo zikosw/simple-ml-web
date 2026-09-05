@@ -29,8 +29,11 @@ jobs:
       - name: Prepare static site artifact
         run: |
           mkdir -p public
-          cp index.html app.js styles.css public/
-          cp -r vendor public/
+          rsync -av \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='*.md' \
+            ./ public/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
