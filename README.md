@@ -2,7 +2,7 @@
 
 A single-page, fully client-side machine learning web app to **train and validate models** in the browser — no server, no build step, and no data ever leaves your machine.
 
-Implemented with [ml.js](https://github.com/mljs/ml) (bundled locally in `vendor/ml.min.js`).
+Implemented with [ml.js](https://github.com/mljs/ml) (bundled locally in `public/vendor/ml.min.js`).
 
 ## Features
 
@@ -15,14 +15,23 @@ Implemented with [ml.js](https://github.com/mljs/ml) (bundled locally in `vendor
 
 ## Usage
 
-Open `index.html` in a browser, or serve the folder with any static server:
+Open `public/index.html` in a browser, or serve the folder with any static server:
 
 ```bash
 python3 -m http.server 8000
-# then open http://localhost:8000
+# then open http://localhost:8000/public/
 ```
 
 1. Load the Iris sample dataset or upload a CSV
 2. Choose training options and click **Train & validate models**
 3. Compare accuracy and confusion matrices
 4. Enter feature values and click **Predict**
+
+## Deploy (GitHub Pages)
+
+This repo now includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml` that deploys the static site to GitHub Pages on every push to `main`.
+
+1. In GitHub, open **Settings → Pages**
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**
+3. Push to `main` (or run the **Deploy static site to GitHub Pages** workflow manually)
+4. Access the site URL from the deployed workflow run output (`page_url`) or from **Settings → Pages**.
